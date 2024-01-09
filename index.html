@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <iframe src='https://www.example.com' height="500" width="500">
+        <iframe src='https://example.com' height="400" width="500">
+            <iframe src='https://www.w3schools.com' height="200" width="200"></iframe>
+        </iframe>
+    </iframe>
+    <!-- <script>
+        window.addEventListener('blur', function (event) {
+            // Get all iframes on the page
+            const allIframes = document.querySelectorAll('iframe');
+            console.log("listen event : " + event.target);
+            // Log each iframe
+            allIframes.forEach((iframe, index) => {
+                console.log(`Iframe ${index + 1}:`);
+
+                try {
+                    // Accessing contentWindow will throw an error for cross-origin iframes
+                    console.log('Source:', iframe.contentWindow.location.href);
+                    console.log('Width:', iframe.width);
+                    console.log('Height:', iframe.height);
+                } catch (error) {
+                    console.log('Unable to access content of the iframe due to cross-origin restrictions.');
+                    console.log(error);
+                }
+
+                console.log('-------------------');
+                iframe.contentWindow.addEventListener('click', function () {
+                    try {
+                        console.log("click event listen.----------");
+                    } catch (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+        });
+    </script> -->
+    <script>
+        //   // Call the function to log all iframes when the DOM is ready
+        window.addEventListener('blur', function (event) {
+            console.log("inside blur");
+            let iframes = document.querySelectorAll('iframe');
+            // console.log(window.recorderMeta.iframeInfo);
+            iframes.forEach((iframe) => {
+                try {
+                    iframe.contentWindow.addEventListener('click', (event) => {
+                        console.log("inside click");
+                        console.log(window.recorderMeta.iframeInfo);
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
